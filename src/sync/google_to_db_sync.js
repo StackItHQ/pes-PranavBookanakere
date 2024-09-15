@@ -1,14 +1,15 @@
-const { google } = require('googleapis');
+const { getSheetData } = require('../api/google_sheets_service');
 const SheetData = require('../models/database_model');
 
-const syncDBToGoogle = async () => {
-    const data = await SheetData.findAll();
+const syncGoogleToDB = async () => {
+    const data = await getSheetData(process.env.SPREADSHEET_ID, 'Sheet1!A2:B');
     
-    // Prepare the data for Google Sheets API
-    const rows = data.map(record => [record.field1, record.field2]);
-
-    // Add rows to the sheet
-    // (Add your logic to update or append to the sheet using the Google Sheets API)
+    for (let row of data) {
+        const [field1, field2] = row;
+        
+        // Update database, creating new records if needed
+        await SheetData.upsert({ field1, field2 });
+    }
 };
 
-module.exports = syncDBToGoogle;
+module.exports = syncGoogleToDB;
