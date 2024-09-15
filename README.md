@@ -1,3 +1,4 @@
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/AHFn7Vbn)
 # Superjoin Hiring Assignment
 
 ### Welcome to Superjoin's hiring assignment! 🚀
@@ -58,4 +59,16 @@ We're available at techhiring@superjoin.ai for all queries.
 All the best ✨.
 
 ## Developer's Section
-*Add your video here, and your approach to the problem (optional). Leave some comments for us here if you want, we will be reading this :)*
+Project Overview: This solution enables real-time synchronization between Google Sheets and a MySQL database. The sync logic ensures that changes in Google Sheets are reflected in the database and vice versa. The codebase is structured in a modular way to allow scalability and maintainability.
+
+Steps:
+
+Google Sheets Integration: The Google Sheets API fetches data from the spreadsheet. Google Apps Script can trigger this automatically.
+Database Sync: Changes from Google Sheets are synced to the database using Sequelize ORM.
+Two-way Sync: The system checks for changes in both the Google Sheet and the database, ensuring both remain in sync.
+Optional Conflict Resolution: A basic "Last Write Wins" strategy is implemented to handle conflicts.
+How to Use:
+
+Clone the repository.
+Configure your .env file with database credentials and Google Sheets information.
+Run node app.js to start the synchronization job.
